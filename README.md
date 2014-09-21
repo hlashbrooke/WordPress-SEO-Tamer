@@ -12,4 +12,6 @@ This plugin is great for:
 * Removing fields & columns that would otherwise confuse your clients
 * De-cluttering your WordPress dashboard, but not losing the power of WordPress SEO's great background features
 
-    "What a dumb plugin." - Joost de Valk (Yoast)
+```
+"What a dumb plugin." - Joost de Valk (Yoast)
+```
