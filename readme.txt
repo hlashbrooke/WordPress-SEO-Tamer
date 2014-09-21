@@ -16,6 +16,15 @@ Love WordPress SEO by Yoast, but hate its dashboard clutter? Well, look no furth
 
 "WordPress SEO Tamer" fixes this problem by removing all of the admin columns, meta boxes and custom fields. There are no options to configure - just activate the plugin and enjoy a cleaner WordPress dashboard without losing any of the other useful functionality provided by WordPress SEO. The changes apply to all post types and taxonomies.
 
+This plugin is great for:
+
+* Removing fields & columns that would otherwise confuse your clients
+* De-cluttering your WordPress dashboard, but not losing the power of WordPress SEO's great background features
+
+Want to contribute? [Fork the GitHub repository](https://github.com/hlashbrooke/WordPress-SEO-Tamer).
+
+    "What a dumb plugin" - Joost de Valk (Yoast)
+
 == Installation ==
 
 Installing "WordPress SEO Tamer" can be done either by searching for "WordPress SEO Tamer" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
@@ -26,18 +35,32 @@ Installing "WordPress SEO Tamer" can be done either by searching for "WordPress 
 
 == Frequently Asked Questions ==
 
+= Why do you have against Yoast? =
+
+Nothing at all - I just don't like the huge amount of dashboard clutter that his WordPress SEO plugin generates.
+
+= Doesn't this plugin just remove all of WordPress SEO's important functions? =
+
+It depends how you use WordPress SEO. If you like all of the background functions (meta data, titles, sitemap, etc.), but don't use the post-specific functions then you need this plugin. However, if you like to customise your SEO info for each post, then this plugin is not for you.
+
 = How do I get the admin columns and meta box to display for a few specific post types? =
 
 Simply use the `wordpress_seo_tamer_exclude_post_types` filter to return an array of post types for which you would like the columns and meta box to display.
 
+== Screenshots ==
+
+1. Before & after views of the posts list table
+2. Before & after views of the post edit screen
+3. Before & after views of the taxonomy edit screen
+
 == Changelog ==
 
 = 1.0 =
-* 2014-09-21
+* 2014-09-20
 * Initial release #boom
 
 == Upgrade Notice ==
 
 = 1.0 =
-* 2014-09-21
+* 2014-09-20
 * Initial release #boom
