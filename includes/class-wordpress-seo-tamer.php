@@ -89,6 +89,8 @@ class WordPress_SEO_Tamer {
 		// Load plugin environment variables
 		$this->file = $file;
 		$this->dir = dirname( $this->file );
+		$this->assets_dir = trailingslashit( $this->dir ) . 'assets';
+		$this->assets_url = esc_url( trailingslashit( plugins_url( '/assets/', $this->file ) ) );
 
 		register_activation_hook( $this->file, array( $this, 'install' ) );
 
@@ -100,6 +102,9 @@ class WordPress_SEO_Tamer {
 
 		// Hide taxonomy fields
 		add_action( 'plugins_loaded', array( $this, 'remove_taxonomy_fields' ), 16 );
+
+		// Load admin JS
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
 
 		// Handle localisation
 		$this->load_plugin_textdomain();
@@ -160,6 +165,17 @@ class WordPress_SEO_Tamer {
 			remove_action( sanitize_text_field( $_GET['taxonomy'] ) . '_edit_form', array( $wpseo_taxonomy, 'term_seo_form' ), 90 );
 		}
 	} // End remove_taxonomy_fields ()
+
+	/**
+	 * Load admin Javascript.
+	 * @access  public
+	 * @since   1.0.0
+	 * @return  void
+	 */
+	public function admin_enqueue_scripts ( $hook = '' ) {
+		wp_register_script( $this->_token . '-admin', esc_url( $this->assets_url ) . 'js/admin' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
+		wp_enqueue_script( $this->_token . '-admin' );
+	} // End admin_enqueue_scripts ()
 
 	/**
 	 * Load plugin localisation
