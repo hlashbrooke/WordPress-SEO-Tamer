@@ -54,6 +54,10 @@ It depends how you use WordPress SEO. If you like all of the background function
 
 == Changelog ==
 
+= 1.2 =
+* 2014-09-25
+* Adding options for selecting which post types and taxonomies the plugin will have an effect on
+
 = 1.1 =
 * 2014-09-22
 * Removing ads from the WordPress SEO settings pages
@@ -63,6 +67,10 @@ It depends how you use WordPress SEO. If you like all of the background function
 * Initial release #boom
 
 == Upgrade Notice ==
+
+= 1.2 =
+* 2014-09-25
+* Adding options for selecting which post types and taxonomies the plugin will have an effect on
 
 = 1.1 =
 * 2014-09-22

@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WordPress SEO Tamer package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress SEO Tamer 1.1\n"
+"Project-Id-Version: WordPress SEO Tamer 1.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wordpress-seo-tamer\n"
-"POT-Creation-Date: 2014-09-22 05:31:04+00:00\n"
+"POT-Creation-Date: 2014-09-25 17:38:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,9 +12,79 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: includes/class-wordpress-seo-tamer.php:228
-#: includes/class-wordpress-seo-tamer.php:237
+#: includes/class-wordpress-seo-tamer-settings.php:71
+msgid "WordPress SEO Tamer"
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:71
+msgid "Tamer"
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:80
+msgid "Settings"
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:134
+msgid "Hide columns for these post types:"
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:135
+msgid "The WordPress SEO admin columns will be hidden for each of the selected post types."
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:142
+msgid "Hide meta box for these post types:"
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:143
+msgid "The WordPress SEO meta box will be hidden for each of the selected post types."
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:150
+msgid "Hide fields for these taxonomies:"
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:151
+msgid "The WordPress SEO fields will be hidden for each of the selected taxonomies."
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:158
+msgid "Hide WordPress SEO ads:"
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:159
+msgid "This will hide the ads that display on the WordPress SEO settings pages."
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:229
+msgid "WordPress SEO Tamer Settings"
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:281
+msgid "Save Settings"
+msgstr ""
+
+#: includes/class-wordpress-seo-tamer-settings.php:312
+#: includes/class-wordpress-seo-tamer-settings.php:321
+#: includes/class-wordpress-seo-tamer.php:298
+#: includes/class-wordpress-seo-tamer.php:307
 msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: includes/lib/class-wordpress-seo-tamer-admin-api.php:159
+msgid "Upload an image"
+msgstr ""
+
+#: includes/lib/class-wordpress-seo-tamer-admin-api.php:159
+msgid "Use image"
+msgstr ""
+
+#: includes/lib/class-wordpress-seo-tamer-admin-api.php:159
+msgid "Upload new image"
+msgstr ""
+
+#: includes/lib/class-wordpress-seo-tamer-admin-api.php:160
+msgid "Remove image"
 msgstr ""
 #. Plugin Name of the plugin/theme
 msgid "WordPress SEO Tamer"
