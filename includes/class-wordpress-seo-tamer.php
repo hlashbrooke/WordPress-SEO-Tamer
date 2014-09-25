@@ -92,6 +92,8 @@ class WordPress_SEO_Tamer {
 		$this->assets_dir = trailingslashit( $this->dir ) . 'assets';
 		$this->assets_url = esc_url( trailingslashit( plugins_url( '/assets/', $this->file ) ) );
 
+		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
 		register_activation_hook( $this->file, array( $this, 'install' ) );
 
 		// Hide admin columns
@@ -103,8 +105,14 @@ class WordPress_SEO_Tamer {
 		// Hide taxonomy fields
 		add_action( 'plugins_loaded', array( $this, 'remove_taxonomy_fields' ), 16 );
 
-		// Load admin JS
+		// Load admin JS & CSS
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ), 10, 1 );
+
+		// Load API for generic admin functions
+		if( is_admin() ) {
+			$this->admin = new WordPress_SEO_Tamer_Admin_API();
+		}
 
 		// Handle localisation
 		$this->load_plugin_textdomain();
@@ -124,11 +132,8 @@ class WordPress_SEO_Tamer {
 			$typenow = 'post';
 		}
 
-		// Set post types to exclude
-		$exclude = apply_filters( $this->_token . '_exclude_post_types', array() );
-
-		// Hide admin columns for included post types
-		if( ! in_array( $typenow, $exclude ) ) {
+		// Hide admin columns for selected post types
+		if( $this->hide_from_post_type( $typenow, 'columns' ) ) {
 			$show_columns = apply_filters( $this->_token . '_show_admin_columns', false );
 		}
 
@@ -144,12 +149,9 @@ class WordPress_SEO_Tamer {
 		// Get all registered post types
 		$post_types = get_post_types();
 
-		// Set post types to exclude
-		$exclude = apply_filters( $this->_token . '_exclude_post_types', array() );
-
-		// Remove meta box for included post types
+		// Remove meta box for selected post types
 		foreach( $post_types as $post_type ) {
-			if( ! in_array( $post_type, $exclude ) ) {
+			if( $this->hide_from_post_type( $post_type, 'metabox' ) ) {
 				remove_meta_box( 'wpseo_meta', $post_type, 'normal' );
 			}
 		}
@@ -161,10 +163,52 @@ class WordPress_SEO_Tamer {
 	 */
 	public function remove_taxonomy_fields () {
 		if ( is_admin() && ( isset( $_GET['taxonomy'] ) && $_GET['taxonomy'] ) ) {
-			global $wpseo_taxonomy;
-			remove_action( sanitize_text_field( $_GET['taxonomy'] ) . '_edit_form', array( $wpseo_taxonomy, 'term_seo_form' ), 90 );
+
+			// Hide fields for selected taxonomies
+			if( $this->hide_from_taxonomy( $_GET['taxonomy'] ) ) {
+				global $wpseo_taxonomy;
+				remove_action( sanitize_text_field( $_GET['taxonomy'] ) . '_edit_form', array( $wpseo_taxonomy, 'term_seo_form' ), 90 );
+			}
+
 		}
 	} // End remove_taxonomy_fields ()
+
+	/**
+	 * Decide whether to hide fields from a given taxonomy
+	 * @param  string  $taxonomy Taxonomy to check
+	 * @return boolean          True if fields must be hidden
+	 */
+	public function hide_from_taxonomy ( $taxonomy = '' ) {
+
+		if( ! $taxonomy ) return false;
+
+		$hide_taxonomies = get_option( $this->settings->base . 'taxonomies', false );
+
+		if( ! $hide_taxonomies || ( $hide_taxonomies && is_array( $hide_taxonomies ) && in_array( $taxonomy, $hide_taxonomies ) ) ) {
+			return true;
+		}
+
+		return false;
+	} // End hide_from_taxonomy ()
+
+	/**
+	 * Decide whether to hide columns/meta box from a given post type
+	 * @param  string  $post_type Post type to check
+	 * @param  string  $context   Context of check (columns or meta box)
+	 * @return boolean            True if columns/meta box must be hidden
+	 */
+	public function hide_from_post_type ( $post_type = '', $context = 'columns' ) {
+
+		if( ! $post_type || ! $context ) return false;
+
+		$hide_posttypes = get_option( $this->settings->base . 'posttypes_' . $context, false );
+
+		if( ! $hide_posttypes || ( $hide_posttypes && is_array( $hide_posttypes ) && in_array( $post_type, $hide_posttypes ) ) ) {
+			return true;
+		}
+
+		return false;
+	} // End hide_from_post_type ()
 
 	/**
 	 * Load admin Javascript.
@@ -173,9 +217,35 @@ class WordPress_SEO_Tamer {
 	 * @return  void
 	 */
 	public function admin_enqueue_scripts ( $hook = '' ) {
-		wp_register_script( $this->_token . '-admin', esc_url( $this->assets_url ) . 'js/admin' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
-		wp_enqueue_script( $this->_token . '-admin' );
+		if( isset( $_GET['page'] ) ) {
+
+			// Only load JS on WordPress SEO pages
+			$page = $_GET['page'];
+			if ( strpos( $page, 'wpseo_' ) !== false ) {
+
+				// Only use Javascript if ads are set to be hidden
+				$hide_ads = get_option( $this->settings->base . 'ads', 'on' );
+
+				if( $hide_ads ) {
+					wp_register_script( $this->_token . '-admin', esc_url( $this->assets_url ) . 'js/admin' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
+					wp_enqueue_script( $this->_token . '-admin' );
+				}
+			}
+		}
 	} // End admin_enqueue_scripts ()
+
+	/**
+	 * Load admin CSS.
+	 * @access  public
+	 * @since   1.0.0
+	 * @return  void
+	 */
+	public function admin_enqueue_styles ( $hook = '' ) {
+		if( isset( $_GET['page'] ) && 'wpseo_tamer' == $_GET['page'] ) {
+			wp_register_style( $this->_token . '-admin', esc_url( $this->assets_url ) . 'css/admin.css', array(), $this->_version );
+			wp_enqueue_style( $this->_token . '-admin' );
+		}
+	} // End admin_enqueue_styles ()
 
 	/**
 	 * Load plugin localisation
