@@ -1,10 +1,10 @@
 === WordPress SEO Tamer ===
 Contributors: hlashbrooke
 Donate link: http://www.hughlashbrooke.com/donate
-Tags: wordpress seo, seo, yoast, clutter, dashboard
+Tags: wordpress seo, seo, yoast, clutter, dashboard, ads
 Requires at least: 4.0
-Tested up to: 4.0
-Stable tag: 1.2
+Tested up to: 4.1
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Love WordPress SEO by Yoast, but hate its dashboard clutter? Well, look no furth
 
 This plugin is great for:
 
-* Removing fields, columns & ads that would otherwise confuse your clients
+* Removing fields, columns & ads that would otherwise confuse you and your clients
 * De-cluttering your WordPress dashboard, but not losing the power of WordPress SEO's great background features
 
 Want to contribute? [Fork the GitHub repository](https://github.com/hlashbrooke/WordPress-SEO-Tamer).
@@ -35,9 +35,9 @@ Installing "WordPress SEO Tamer" can be done either by searching for "WordPress 
 
 == Frequently Asked Questions ==
 
-= Why do you have against Yoast? =
+= What do you have against Yoast? =
 
-Nothing at all - I just don't like the huge amount of dashboard clutter that his WordPress SEO plugin generates.
+Nothing at all - I just don't like the huge amount of dashboard clutter that his WordPress SEO plugin generates. A clean dashboard is a happy dashboard.
 
 = Doesn't this plugin just remove all of WordPress SEO's important functions? =
 
@@ -54,6 +54,10 @@ It depends how you use WordPress SEO. If you like all of the background function
 
 == Changelog ==
 
+= 1.2.1 =
+* 2014-12-11
+* Fixing saving of settings when all checkboxes are unchecked
+
 = 1.2 =
 * 2014-09-25
 * Adding options for selecting which post types and taxonomies the plugin will have an effect on
@@ -68,14 +72,5 @@ It depends how you use WordPress SEO. If you like all of the background function
 
 == Upgrade Notice ==
 
-= 1.2 =
-* 2014-09-25
-* Adding options for selecting which post types and taxonomies the plugin will have an effect on
-
-= 1.1 =
-* 2014-09-22
-* Removing ads from the WordPress SEO settings pages
-
-= 1.0 =
-* 2014-09-20
-* Initial release #boom
+= 1.2.1 =
+* Fixing saving of settings when all checkboxes are unchecked.

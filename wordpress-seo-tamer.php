@@ -1,13 +1,13 @@
 <?php
 /*
  * Plugin Name: WordPress SEO Tamer
- * Version: 1.2
+ * Version: 1.2.1
  * Plugin URI: https://wordpress.org/plugins/wp-seo-tamer
  * Description: Love WordPress SEO by Yoast, but hate its dashboard clutter? Well, look no further!
  * Author: Hugh Lashbrooke
  * Author URI: http://www.hughlashbrooke.com/
  * Requires at least: 4.0
- * Tested up to: 4.0
+ * Tested up to: 4.1
  *
  * Text Domain: wordpress-seo-tamer
  * Domain Path: /lang/

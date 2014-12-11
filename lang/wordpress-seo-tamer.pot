@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WordPress SEO Tamer package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WordPress SEO Tamer 1.2\n"
+"Project-Id-Version: WordPress SEO Tamer 1.2.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wordpress-seo-tamer\n"
-"POT-Creation-Date: 2014-09-25 17:38:59+00:00\n"
+"POT-Creation-Date: 2014-12-11 06:30:31+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -71,19 +71,19 @@ msgstr ""
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: includes/lib/class-wordpress-seo-tamer-admin-api.php:159
+#: includes/lib/class-wordpress-seo-tamer-admin-api.php:163
 msgid "Upload an image"
 msgstr ""
 
-#: includes/lib/class-wordpress-seo-tamer-admin-api.php:159
+#: includes/lib/class-wordpress-seo-tamer-admin-api.php:163
 msgid "Use image"
 msgstr ""
 
-#: includes/lib/class-wordpress-seo-tamer-admin-api.php:159
+#: includes/lib/class-wordpress-seo-tamer-admin-api.php:163
 msgid "Upload new image"
 msgstr ""
 
-#: includes/lib/class-wordpress-seo-tamer-admin-api.php:160
+#: includes/lib/class-wordpress-seo-tamer-admin-api.php:164
 msgid "Remove image"
 msgstr ""
 #. Plugin Name of the plugin/theme
