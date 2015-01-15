@@ -153,13 +153,6 @@ class WordPress_SEO_Tamer_Settings {
 					'options'		=> $tax_array,
 					'default'		=> array_keys( $tax_array ),
 				),
-				array(
-					'id' 			=> 'ads',
-					'label'			=> __( 'Hide WordPress SEO ads:', 'wordpress-seo-tamer' ),
-					'description'	=> __( 'This will hide the ads that display on the WordPress SEO settings pages.', 'wordpress-seo-tamer' ),
-					'type'			=> 'checkbox',
-					'default'		=> 'on',
-				),
 			),
 		);
 

@@ -106,7 +106,6 @@ class WordPress_SEO_Tamer {
 		add_action( 'plugins_loaded', array( $this, 'remove_taxonomy_fields' ), 16 );
 
 		// Load admin JS & CSS
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ), 10, 1 );
 
 		// Load API for generic admin functions
@@ -209,30 +208,6 @@ class WordPress_SEO_Tamer {
 
 		return false;
 	} // End hide_from_post_type ()
-
-	/**
-	 * Load admin Javascript.
-	 * @access  public
-	 * @since   1.0.0
-	 * @return  void
-	 */
-	public function admin_enqueue_scripts ( $hook = '' ) {
-		if( isset( $_GET['page'] ) ) {
-
-			// Only load JS on WordPress SEO pages
-			$page = $_GET['page'];
-			if ( strpos( $page, 'wpseo_' ) !== false ) {
-
-				// Only use Javascript if ads are set to be hidden
-				$hide_ads = get_option( $this->settings->base . 'ads', 'on' );
-
-				if( $hide_ads ) {
-					wp_register_script( $this->_token . '-admin', esc_url( $this->assets_url ) . 'js/admin' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
-					wp_enqueue_script( $this->_token . '-admin' );
-				}
-			}
-		}
-	} // End admin_enqueue_scripts ()
 
 	/**
 	 * Load admin CSS.
